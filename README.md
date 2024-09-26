@@ -33,7 +33,7 @@ Add script references:
 <script src="_content/Blazor.Bootstrap/blazor.bootstrap.js"></script>
 ```
 
-Remove default reference:
+Remove this reference:
 
 ```
 <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
