@@ -31,7 +31,7 @@ Add script references:
 <!-- Add sortable.js reference if SortableList component is used in your application. -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script src="_content/Blazor.Bootstrap/blazor.bootstrap.js"></script>
-´``
+```
 
 Remove default reference:
 
