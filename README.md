@@ -10,17 +10,17 @@ https://docs.blazorbootstrap.com/getting-started/blazor-webapp-server-global-net
 
 ![image](https://github.com/user-attachments/assets/40e886f5-0367-43ae-aa95-d6271bf73149)
 
-## 2. Modify the App.razor component to include the Radzen references
+## 2. Modify the App.razor component
 
-Add CSS references
+Add CSS references:
 
 ```
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 <link href="_content/Blazor.Bootstrap/blazor.bootstrap.css" rel="stylesheet" />
-´``
+```
 
-Add script references
+Add script references:
 
 ```
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -33,12 +33,11 @@ Add script references
 <script src="_content/Blazor.Bootstrap/blazor.bootstrap.js"></script>
 ´``
 
-Remove default reference
+Remove default reference:
 
 ```
 <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
 ```
-
 
 This is the **App.razor** component including Radzen Components
 
@@ -75,7 +74,15 @@ This is the **App.razor** component including Radzen Components
 </html>
 ```
 
-## 3. Include in the _Imports.razor the Radzen.Blazor
+## 3. Include in the _Imports.razor
+
+Add this line in the **_Imports.razor**:
+
+```
+@using BlazorBootstrap;
+```
+
+This is the _Imports.razor whole code
 
 ```razor
 @using System.Net.Http
@@ -133,7 +140,67 @@ app.MapRazorComponents<App>()
 app.Run();
 ```
 
-## 5. Create a new Razor Component to validate the Radzen installation
+## 5. Modify the MainLayout.razor 
+
+This is the new code:
+
+```razor
+@inherits LayoutComponentBase
+
+<div class="bb-page">
+
+    <Sidebar @ref="sidebar"
+             IconName="IconName.BootstrapFill"
+             Title="Blazor Bootstrap"
+             DataProvider="SidebarDataProvider" />
+
+    <main>
+        <div class="bb-top-row px-4 d-flex justify-content-end">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            <div class="py-2">
+                @Body
+            </div>
+        </article>
+    </main>
+
+</div>
+
+@code {
+    private Sidebar sidebar = default!;
+    private IEnumerable<NavItem> navItems = default!;
+
+    private async Task<SidebarDataProviderResult> SidebarDataProvider(SidebarDataProviderRequest request)
+    {
+        if (navItems is null)
+            navItems = GetNavItems();
+
+        return await Task.FromResult(request.ApplyTo(navItems));
+    }
+
+    private IEnumerable<NavItem> GetNavItems()
+    {
+        navItems = new List<NavItem>
+        {
+            new NavItem { Id = "1", Href = "/", IconName = IconName.HouseDoorFill, Text = "Home", Match=NavLinkMatch.All},
+            new NavItem { Id = "2", Href = "/counter", IconName = IconName.PlusSquareFill, Text = "Counter"},
+            new NavItem { Id = "3", Href = "/weather", IconName = IconName.Table, Text = "Fetch Data"},
+            new NavItem { Id = "4", Href = "/accordion", IconName = IconName.Table, Text = "Accordion"},
+        };
+
+        return navItems;
+    }
+}
+```
+
+
+## 6. Comment all code in the MainLayout.razor.css
+
+![image](https://github.com/user-attachments/assets/a6ec764f-57f0-4fc9-a532-101d04c84f92)
+
+## 7. Create a new Razor Component to validate the Radzen installation
 
 We create a new component doing right click on the **Pages** folder and selecting **Add->Razor Component**:
 
