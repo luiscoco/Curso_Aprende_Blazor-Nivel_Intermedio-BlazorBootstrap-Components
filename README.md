@@ -74,7 +74,7 @@ This is the **App.razor** component including Radzen Components
 </html>
 ```
 
-## 3. Include in the _Imports.razor
+## 3. Add BlazorBootstrap in the _Imports.razor
 
 Add this line in the **_Imports.razor**:
 
