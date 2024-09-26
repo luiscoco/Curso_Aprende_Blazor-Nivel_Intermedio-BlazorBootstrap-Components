@@ -203,9 +203,11 @@ This is the new code:
 
 We create a new component doing right click on the **Pages** folder and selecting **Add->Razor Component**:
 
-![image](https://github.com/user-attachments/assets/37933abb-c0e6-4d84-afcc-19d531a4ff94)
+![image](https://github.com/user-attachments/assets/adb02a33-4374-45a2-9919-36f0e8460979)
 
 We set the new Razor Component name: **AccordionComponent.razor**
+
+This is the new component source code:
 
 ```razor
 @page "/accordion"
@@ -238,7 +240,6 @@ We set the new Razor Component name: **AccordionComponent.razor**
         </Content>
     </AccordionItem>
 </Accordion>
-
 
 @code {
 
