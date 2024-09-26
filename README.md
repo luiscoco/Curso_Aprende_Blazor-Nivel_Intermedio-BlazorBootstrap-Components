@@ -195,7 +195,6 @@ This is the new code:
 }
 ```
 
-
 ## 6. Comment all code in the MainLayout.razor.css
 
 ![image](https://github.com/user-attachments/assets/a6ec764f-57f0-4fc9-a532-101d04c84f92)
@@ -206,62 +205,47 @@ We create a new component doing right click on the **Pages** folder and selectin
 
 ![image](https://github.com/user-attachments/assets/37933abb-c0e6-4d84-afcc-19d531a4ff94)
 
-We set the new Razor Component name: **RadzenButtons.razor**
+We set the new Razor Component name: **AccordionComponent.razor**
 
 ```razor
-@page "/radzen-buttons"
-@inject NotificationService NotificationService
+@page "/accordion"
 
+<h3>Accordion</h3>
 
-@* https://blazor.radzen.com/button?theme=material3 *@
+<Accordion>
+    <AccordionItem>
+        <TitleTemplate>
+            <Icon Name="IconName.HouseFill" Class="me-1" /> Accordion Item #1
+        </TitleTemplate>
+        <Content>
+            <b>This is the first item's accordion body.</b> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+        </Content>
+    </AccordionItem>
+    <AccordionItem>
+        <TitleTemplate>
+            <Icon Name="IconName.PersonFill" Class="me-1" /> Accordion Item #2
+        </TitleTemplate>
+        <Content>
+            <b>This is the second item's accordion body.</b> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+        </Content>
+    </AccordionItem>
+    <AccordionItem>
+        <TitleTemplate>
+            <Icon Name="IconName.PhoneFill" Class="me-1" /> Accordion Item #3
+        </TitleTemplate>
+        <Content>
+            <b>This is the third item's accordion body.</b> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.
+        </Content>
+    </AccordionItem>
+</Accordion>
 
-<RadzenButton Click="@ButtonClicked" Text="Hi"></RadzenButton>
-
-<br />
-<br />
-
-<p>@message</p>
-
-<br />
-<br />
-
-<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-    <RadzenButton Click=@(args => OnClick("Primary button")) Text="Primary" ButtonStyle="ButtonStyle.Primary" />
-    <RadzenButton Click=@(args => OnClick("Secondary button")) Text="Secondary" ButtonStyle="ButtonStyle.Secondary" />
-    <RadzenButton Click=@(args => OnClick("Base button")) Text="Base" ButtonStyle="ButtonStyle.Base" />
-    <RadzenButton Click=@(args => OnClick("Info button")) Text="Info" ButtonStyle="ButtonStyle.Info" />
-    <RadzenButton Click=@(args => OnClick("Success button ")) Text="Success" ButtonStyle="ButtonStyle.Success" />
-    <RadzenButton Click=@(args => OnClick("Warning button ")) Text="Warning" ButtonStyle="ButtonStyle.Warning" />
-    <RadzenButton Click=@(args => OnClick("Danger button")) Text="Danger" ButtonStyle="ButtonStyle.Danger" />
-</RadzenStack>
 
 @code {
-    private string message = "";
-
-    void ButtonClicked()
-    {
-        message = "Hello World!";
-    }
-    private void OnClick(string text)
-    {
-        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
-    }
 
 }
 ```
 
-## 6. Modify the NavMenu.razor component and add a new NavLink
+## 8. Run the application to validate the result
 
-Add a new NavLink in the NavMenu.razor component to navigate to the new component:
+![image](https://github.com/user-attachments/assets/18cf09ec-210a-4e0d-9bf9-896e8a8e62b6)
 
-```
-<div class="nav-item px-3">
-   <NavLink class="nav-link" href="radzen-buttons">
-       <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> RadzenButtons
-   </NavLink>
-</div>
-```
-
-## 7. Run the application to validate the result
-
-![image](https://github.com/user-attachments/assets/1149cf90-4b85-446a-a16d-4e16a2413a06)
