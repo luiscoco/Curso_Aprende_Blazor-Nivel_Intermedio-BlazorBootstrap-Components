@@ -1,10 +1,12 @@
-# How to install BlazorBootstrap Components in your Blazor Web Application
+![image](https://github.com/user-attachments/assets/93925175-9ce6-4fb0-a5e7-b8a1b8e22980)# How to install BlazorBootstrap Components in your Blazor Web Application
 
 **Note:** For more information about this sample visit these URLs:
 
 https://demos.blazorbootstrap.com/
 
 https://docs.blazorbootstrap.com/getting-started/blazor-webapp-server-global-net-8
+
+![image](https://github.com/user-attachments/assets/559cdb6a-626a-4216-a92e-1054393e5b74)
 
 ## 1. Load the Nuget package Blazor.Bootstrap
 
